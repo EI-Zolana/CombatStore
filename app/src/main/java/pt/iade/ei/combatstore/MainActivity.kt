@@ -142,7 +142,7 @@ fun MainView() {
             Card (modifier = Modifier.fillMaxWidth()){
                 Box(
                     ){
-                   Image(painter = painterResource(pt.iade.ei.combatstore.R.drawable.ic_launcher_background),
+                   Image(painter = painterResource(pt.iade.ei.combatstore.R.drawable.ufc_main),
                        contentDescription = "", // adicionar uma descrição a imagem que adicionar
                        contentScale = ContentScale.Crop,
                        modifier = Modifier.height(200.dp)
@@ -168,3 +168,4 @@ fun HomePreview() {
         MainView()
     }
 }
+

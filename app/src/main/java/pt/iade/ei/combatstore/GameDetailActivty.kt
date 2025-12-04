@@ -120,6 +120,9 @@ fun GameDetailView() {
                         Spacer(modifier = Modifier.height(12.dp))
                 }
             }
+            ItemCard()
+            ItemCard()
+            ItemCard()
 
         }
     }
@@ -158,8 +161,9 @@ contentAlignment = Alignment.Center
             text = "Item description in brief detail . At least enough to cover 2 "
         )
     }
-    Text(
+     Text(
         text = "12.99",
         fontWeight = FontWeight.Bold,
     )
 }
+

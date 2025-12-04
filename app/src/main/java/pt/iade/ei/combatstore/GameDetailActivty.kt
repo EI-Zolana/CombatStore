@@ -1,5 +1,4 @@
 package pt.iade.ei.combatstore
-
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -50,6 +49,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CombatStoreTheme {
+                GameDetailView()
             }
         }
     }
@@ -57,7 +57,7 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainView() {
+fun GameDetailView() {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -67,7 +67,7 @@ fun MainView() {
                 ),
                 title = {
                     Row ( modifier = Modifier.padding(all = 4.dp)
-                                            .fillMaxWidth(),
+                        .fillMaxWidth(),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.End) {
 
@@ -85,109 +85,20 @@ fun MainView() {
                 }
             )
         },
-        bottomBar = {
-            BottomAppBar (
-                containerColor = Color.White,
-                contentColor = Color.Gray
-            ){
-                Row (   modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceEvenly,
-                        verticalAlignment = Alignment.CenterVertically){
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Icon(
-                            Icons.Outlined.Star,
-                            contentDescription = ""
-                        )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(
-                            text = "Featured"
-                        )
-                    }
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Icon(
-                            painter = painterResource(pt.iade.ei.combatstore.R.drawable.outline_archive_24),
-                            contentDescription = ""
-                        )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(
-                            text = "History"
-                        )
-                    }
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Icon(
-                            Icons.Outlined.Person,
-                            contentDescription = ""
-                        )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(
-                            text = "Profile"
-                        )
-                    }
-
-                }
-            }
-        }
-
-
     ) { innerPadding ->
         Column(
             modifier = Modifier
                 .padding(innerPadding)
         ) {
-            Spacer(modifier = Modifier.height(30.dp))
-            Row {
-                Text(
-                    text = "CombatStore",
-                    fontSize = 35.sp,
-                    fontWeight = FontWeight.Black
-                )
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            GameBanner(gameName ="UFC 3", gameImage = R.drawable.ea_ufc3_banner)
-            Spacer(modifier = Modifier.height(8.dp))
-            GameBanner(gameName = "Avengers Initiative", gameImage = R.drawable.avengers_iniatiative)
+
         }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun HomePreview() {
+fun GameDetailPreview() {
     CombatStoreTheme {
-        MainView()
+
     }
 }
-
-
-
-
-@Composable
-fun GameBanner(
-    @DrawableRes gameImage : Int,
-    gameName : String
-) {
-    Card (
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(18.dp)
-       //  shape = CardDefaults.RoundedCornerShape(4.dp)
-
-    ){
-        Box(
-        ){
-            Image(painter = painterResource(gameImage),
-                contentDescription = "", // adicionar uma descrição a imagem que adicionar
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.height(200.dp)
-                    .fillMaxWidth()
-            )
-            Column(modifier = Modifier.align(Alignment.BottomStart)) {
-                Text(
-                    text = gameName
-                )
-            }
-            Spacer(modifier = Modifier)
-        }
-    }
-}
-
-

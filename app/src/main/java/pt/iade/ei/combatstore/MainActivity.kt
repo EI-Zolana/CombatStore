@@ -141,25 +141,9 @@ fun MainView() {
                 )
             }
             Spacer(modifier = Modifier.height(16.dp))
-            Card (modifier = Modifier.fillMaxWidth()){
-                Box(
-                    ){
-                   Image(painter = painterResource(pt.iade.ei.combatstore.R.drawable.ufc_main),
-                       contentDescription = "", // adicionar uma descrição a imagem que adicionar
-                       contentScale = ContentScale.Crop,
-                       modifier = Modifier.height(200.dp)
-                                        .fillMaxWidth()
-                   )
-                    Column(modifier = Modifier.align(Alignment.BottomStart)) {
-                        Text(
-                        text = "EA SPORTS UFC 3"
-                    )
-                    }
-                    Spacer(modifier = Modifier)
+            GameBanner()
+            GameBanner()
 
-                }
-
-            }
         }
     }
 }
@@ -184,3 +168,26 @@ data class Game(
 
 
 @Composable
+fun GameBanner() {
+    Card (modifier = Modifier.fillMaxWidth()){
+        Box(
+        ){
+            Image(painter = painterResource(pt.iade.ei.combatstore.R.drawable.ufc_main),
+                contentDescription = "", // adicionar uma descrição a imagem que adicionar
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.height(200.dp)
+                    .fillMaxWidth()
+            )
+            Column(modifier = Modifier.align(Alignment.BottomStart)) {
+                Text(
+                    text = "EA SPORTS UFC 3"
+                )
+            }
+            Spacer(modifier = Modifier)
+
+        }
+
+    }
+
+
+}

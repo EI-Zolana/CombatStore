@@ -43,7 +43,7 @@ import androidx.compose.ui.unit.sp
 import pt.iade.ei.combatstore.ui.theme.CombatStoreTheme
 
 
-class MainActivity : ComponentActivity() {
+class GameDetailActivty : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -89,7 +89,36 @@ fun GameDetailView() {
         Column(
             modifier = Modifier
                 .padding(innerPadding)
+                .padding(16.dp)
         ) {
+
+
+            Row (modifier = Modifier.fillMaxWidth()){
+                Card( modifier = Modifier
+                    .width(130.dp)
+                    .height(130.dp),
+                    shape = RoundedCornerShape(8.dp),
+                colors = CardDefaults.cardColors(containerColor = Color.Black)
+                ){
+                    Box( contentAlignment = Alignment.Center ) {
+                        Text("Game")
+                    }
+
+
+                }
+                Spacer(
+                    modifier = Modifier.width(12.dp)
+                )
+                Column (modifier = Modifier.weight(1f)
+                ){
+                    Text(text = "A cerca dos melhores jogos de futebol")
+                    Spacer(modifier = Modifier.height(24.dp))
+                    Text(text = "Purchasable Items",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp)
+                        Spacer(modifier = Modifier.height(12.dp))
+                }
+            }
 
         }
     }
@@ -99,6 +128,12 @@ fun GameDetailView() {
 @Composable
 fun GameDetailPreview() {
     CombatStoreTheme {
-
+    GameDetailView()
     }
+}
+
+
+@Composable
+fun ItemCard(){
+
 }

@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.BottomAppBar
@@ -59,7 +60,7 @@ fun MainView() {
         topBar = {
             TopAppBar(
                 colors = topAppBarColors(
-                    containerColor = Color.White,
+                    containerColor = Color.Gray,
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
                 title = {
@@ -87,8 +88,9 @@ fun MainView() {
                 containerColor = Color.White,
                 contentColor = Color.Gray
             ){
-                Row (horizontalArrangement = Arrangement.SpaceEvenly,
-                    verticalAlignment = Alignment.CenterVertically){
+                Row (   modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceEvenly,
+                        verticalAlignment = Alignment.CenterVertically){
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Icon(
                             Icons.Outlined.Star,
@@ -101,22 +103,22 @@ fun MainView() {
                     }
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Icon(
-                            Icons.Outlined.Star,
+                            painter = painterResource(pt.iade.ei.combatstore.R.drawable.outline_archive_24),
                             contentDescription = ""
                         )
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(
-                            text = "Featured"
+                            text = "History"
                         )
                     }
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Icon(
-                            Icons.Outlined.Star,
+                            Icons.Outlined.Person,
                             contentDescription = ""
                         )
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(
-                            text = "Featured"
+                            text = "Profile"
                         )
                     }
 
@@ -153,6 +155,8 @@ fun MainView() {
                         text = "EA SPORTS UFC 3"
                     )
                     }
+                    Spacer(modifier = Modifier)
+
                 }
 
             }
@@ -169,3 +173,14 @@ fun HomePreview() {
     }
 }
 
+data class Game(
+    var id: Long,
+    var title: String,
+    var shortDescription: String,
+    var longDescription: String,
+    var price: Double,
+    var imageResId: Int
+)
+
+
+@Composable

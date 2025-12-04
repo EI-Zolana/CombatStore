@@ -35,6 +35,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -135,5 +136,30 @@ fun GameDetailPreview() {
 
 @Composable
 fun ItemCard(){
+        Row(modifier = Modifier.padding(vertical =  8.dp)
+                            .fillMaxWidth()) {
+            Card (modifier = Modifier.height(80.dp)
+                                    .width(80.dp),
+                shape = RoundedCornerShape(8.dp),
+                colors = CardDefaults.cardColors(containerColor = Color.LightGray)){
+            Box(
+contentAlignment = Alignment.Center
+            ){
+                Text("Item Image")
+            }
+            }
 
+        }
+    Spacer(modifier = Modifier.width(12.dp))
+    Column (){
+        Text("Item Name",
+            fontWeight = FontWeight.Bold)
+        Text(
+            text = "Item description in brief detail . At least enough to cover 2 "
+        )
+    }
+    Text(
+        text = "12.99",
+        fontWeight = FontWeight.Bold,
+    )
 }

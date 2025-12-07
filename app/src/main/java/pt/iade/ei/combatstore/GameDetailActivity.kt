@@ -49,21 +49,21 @@ val game = intent.getSerializableExtra("game") as Game
         enableEdgeToEdge()
         setContent {
             CombatStoreTheme {
-                GameDetailView(game)
+                GameDetailView()
             }
         }
     }
 }
 
+
+
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun GameDetailView(game: Game) {
-    
-    
-    var selectedItem by remember { mutableStateOf<PurchasableItem?>(null) }
-    val sheetState = rememberModalBottomSheetState()
-    val scope = rememberCoroutineScope()
-    val context = LocalContext.current
+fun GameDetailView() {
+
+
+
 
     Scaffold(
         topBar = {
@@ -134,14 +134,6 @@ fun GameDetailView(game: Game) {
     }
 }
 
-@Preview( showBackground = true)
-@Composable
-fun GameDetailPreview() {
-    CombatStoreTheme {
-    GameDetailView()
-    }
-}
-
 
 @Composable
 fun ItemCard(){
@@ -172,5 +164,13 @@ contentAlignment = Alignment.Center
         fontWeight = FontWeight.Bold,
 
     )
+}
+
+@Preview( showBackground = true)
+@Composable
+fun GameDetailPreview( ) {
+    CombatStoreTheme {
+        GameDetailView()
+    }
 }
 

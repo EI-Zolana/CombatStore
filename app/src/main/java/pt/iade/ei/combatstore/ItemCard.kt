@@ -21,13 +21,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.LineHeightStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun ItemCard(item: PurchasableItem, onClick: () -> Unit ) {
     Row(
         modifier = Modifier
-            .padding(vertical = 8.dp)
+            .padding(vertical = 100.dp)
             .fillMaxWidth()
             .clickable { onClick() }
     ) {
@@ -61,4 +62,20 @@ fun ItemCard(item: PurchasableItem, onClick: () -> Unit ) {
         )
 
     }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun ItemCardPreview() {
+
+    val exampleItem = PurchasableItem(
+
+        id = 12,
+        name = "Iron Man",
+        description = "Armadura de ferro",
+        price = 19.99,
+        imageResId = R.drawable.iron_man
+    )
+     ItemCard(item = exampleItem, onClick = {})
 }

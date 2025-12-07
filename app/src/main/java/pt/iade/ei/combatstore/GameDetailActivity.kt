@@ -44,12 +44,11 @@ import pt.iade.ei.combatstore.ui.theme.CombatStoreTheme
 class GameDetailActivty : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-val game = intent?.getSerializableExtra("game") as? Game
 
 
+        enableEdgeToEdge()
         setContent {
             CombatStoreTheme {
-                if (game!= null)
                 GameDetailView()
             }
         }

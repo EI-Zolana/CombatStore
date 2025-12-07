@@ -153,7 +153,7 @@ fun MainView() {
     ) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
             Spacer(modifier = Modifier.height(30.dp))
-            Text("Combact Store",
+            Text("CombatStore",
                 fontWeight = FontWeight.Black)
             Spacer(modifier = Modifier.height(10.dp))
             games.forEach { game ->

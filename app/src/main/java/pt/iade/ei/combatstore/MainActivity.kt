@@ -71,8 +71,13 @@ fun MainView() {
         ),
         Game(
             id = 2,
-
+            title = "Avengers Initiative",
+            shortDescription = "Heróis",
+            longDescription = "",
+            price = 29.99,
+            imageResId = R.drawable.avengers_iniatiative
         )
+
     )
     Scaffold(
         topBar = {
@@ -146,26 +151,16 @@ fun MainView() {
 
 
     ) { innerPadding ->
-        LazyColumn(modifier = Modifier.padding(innerPadding)) {
-        item { Spacer(modifier = Modifier.height(30.dp)) }
-
-            item {
-                Text(
-                    text = "CombatStore",
-                    fontSize = 35.sp,
-                    fontWeight = FontWeight.Black,
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
+        Column(modifier = Modifier.padding(innerPadding)) {
+            Spacer(modifier = Modifier.height(30.dp))
+            Text("Combact Store",
+                fontWeight = FontWeight.Black)
+            Spacer(modifier = Modifier.height(10.dp))
+            games.forEach { game ->
+                GameBanner(game = game,
+                    {})
             }
-            item { Spacer(modifier = Modifier.height(16.dp)) }
-            items(gamesList) { game ->
-                GameBanner(
-                    gameImage = game.image,
-                    gameName = game.name
-                )
 
-                Spacer(modifier = Modifier.height(8.dp))
-            }
         }
 
     }
@@ -179,37 +174,5 @@ fun HomePreview() {
     }
 }
 
-
-
-
-@Composable
-fun GameBanner(
-    @DrawableRes gameImage : Int,
-    gameName : String
-) {
-    Card (
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(18.dp)
-       //  shape = CardDefaults.RoundedCornerShape(4.dp)
-
-    ){
-        Box(
-        ){
-            Image(painter = painterResource(gameImage),
-                contentDescription = gameName, // adicionar uma descrição a imagem que adicionar
-
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.height(200.dp)
-                    .fillMaxWidth()
-            )
-            Column(modifier = Modifier.align(Alignment.BottomStart)) {
-                Text(
-                    text = gameName
-                )
-            }
-            Spacer(modifier = Modifier)
-        }
-    }
-}
 
 

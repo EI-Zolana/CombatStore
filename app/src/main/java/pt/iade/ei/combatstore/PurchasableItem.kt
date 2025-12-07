@@ -3,10 +3,10 @@ package pt.iade.ei.combatstore
 
 data class PurchasableItem(
 
-    val id: Long,
-    val name: String,
-    val description: String,
-    val price: Double,
-    val imageResId: Int
+    var id: Long,
+    var name: String,
+    var description: String,
+    var price: Double,
+    var imageResId: Int
 
 )

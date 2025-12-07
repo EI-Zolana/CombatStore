@@ -1,10 +1,11 @@
 package pt.iade.ei.combatstore
 
 data class Game(
-    val id: Long,
-    val title: String,
-    val shortDescription: String,
-    val longDescription: String,
-    val price: Double,
-    val imageResId: Int
+    var id: Long,
+    var title: String,
+    var shortDescription: String,
+    var longDescription: String,
+    var price: Double,
+    var imageResId: Int
 )
+

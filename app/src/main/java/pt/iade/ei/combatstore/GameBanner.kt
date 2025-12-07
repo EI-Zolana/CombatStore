@@ -48,8 +48,8 @@ fun GameBanner (game: Game, onClick: () -> Unit) {
                 .align(Alignment.BottomStart)
                 .padding(12.dp))
             {
-                Text(text = "game.name", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.Black)
-                Text(text = "game.description", fontSize = 12.sp, fontWeight = FontWeight.Normal, color = Color.Black)
+                Text(text = game.title, fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.Black)
+                Text(text = game.shortDescription, fontSize = 12.sp, fontWeight = FontWeight.Normal, color = Color.Black)
             }
         }
     }
@@ -68,5 +68,5 @@ fun  GameBannerPreview() {
             12.99,
             imageResId = R.drawable.martelo
         )
-    ) { }
+    ) {}
 }

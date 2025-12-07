@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.dp
 fun ItemCard(item: PurchasableItem, onClick: () -> Unit ) {
     Row(
         modifier = Modifier
-            .padding(vertical = 100.dp)
+            .padding(vertical = 16.dp)
             .fillMaxWidth()
             .clickable { onClick() }
     ) {

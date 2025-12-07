@@ -1,6 +1,7 @@
 package pt.iade.ei.combatstore
 
 import android.os.Bundle
+import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Notifications
@@ -58,6 +60,20 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainView() {
+    val games =listOf(
+        Game(
+            id = 1,
+            title = "UFC 3",
+            shortDescription = "Realistic fighting gameplay",
+            longDescription = "",
+            price = 29.99,
+            imageResId = R.drawable.ea_ufc3_banner
+        ),
+        Game(
+            id = 2,
+
+        )
+    )
     Scaffold(
         topBar = {
             TopAppBar(
@@ -130,23 +146,28 @@ fun MainView() {
 
 
     ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-        ) {
-            Spacer(modifier = Modifier.height(30.dp))
-            Row {
+        LazyColumn(modifier = Modifier.padding(innerPadding)) {
+        item { Spacer(modifier = Modifier.height(30.dp)) }
+
+            item {
                 Text(
                     text = "CombatStore",
                     fontSize = 35.sp,
-                    fontWeight = FontWeight.Black
+                    fontWeight = FontWeight.Black,
+                    modifier = Modifier.padding(horizontal = 16.dp)
                 )
             }
-            Spacer(modifier = Modifier.height(16.dp))
-            GameBanner(gameName ="UFC 3", gameImage = R.drawable.ea_ufc3_banner)
-            Spacer(modifier = Modifier.height(8.dp))
-            GameBanner(gameName = "Avengers Initiative", gameImage = R.drawable.avengers_iniatiative)
+            item { Spacer(modifier = Modifier.height(16.dp)) }
+            items(gamesList) { game ->
+                GameBanner(
+                    gameImage = game.image,
+                    gameName = game.name
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+            }
         }
+
     }
 }
 
@@ -175,7 +196,8 @@ fun GameBanner(
         Box(
         ){
             Image(painter = painterResource(gameImage),
-                contentDescription = "", // adicionar uma descrição a imagem que adicionar
+                contentDescription = gameName, // adicionar uma descrição a imagem que adicionar
+
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.height(200.dp)
                     .fillMaxWidth()
